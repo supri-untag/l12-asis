@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('theses', function (Blueprint $table) {
-            $table->id();
+            $table->uuid("id");
+            $table->string("title");
+            $table->string("smt");
+            $table->string("promotor");
+            $table->string("material_examiner");
+            $table->string("Method_examiner");
+            $table->string("moderator");
             $table->timestamps();
         });
     }
