@@ -5,17 +5,13 @@
     <title>Display Test</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://keenthemes.com/metronic" />
-    <meta property="og:site_name" content="Keenthemes | Metronic" />
-    <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="{{ Vite::asset('resources/assets/media/favicon.ico') }}" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="{{URL::asset('plugins/global/fonts.bundle.css')}}" />
     <!--end::Fonts-->
     <!--begin::Vendor Stylesheets(used for this page only)-->
-
+    @yield('meta')
+    @yield('css')
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{URL::asset('plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
@@ -219,16 +215,7 @@
                         <img alt="Logo" src="{{ Vite::asset('resources/assets/media/logos/default-small.svg') }} " class="h-20px app-sidebar-logo-minimize" />
                     </a>
                     <!--end::Logo image-->
-                    <!--begin::Sidebar toggle-->
-                    <!--begin::Minimized sidebar setup:
-            if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_state"] === "on") {
-                1. "src/js/layout/sidebar.js" adds "sidebar_minimize_state" cookie value to save the sidebar minimize state.
-                2. Set data-kt-app-sidebar-minimize="on" attribute for body tag.
-                3. Set data-kt-toggle-state="active" attribute to the toggle element with "kt_app_sidebar_toggle" id.
-                4. Add "active" class to to sidebar toggle element with "kt_app_sidebar_toggle" id.
-            }
-        -->
-                    <div id="kt_app_sidebar_toggle" class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary body-bg h-30px w-30px position-absolute top-50 start-100 translate-middle rotate" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="app-sidebar-minimize">
+                     <div id="kt_app_sidebar_toggle" class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary body-bg h-30px w-30px position-absolute top-50 start-100 translate-middle rotate" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="app-sidebar-minimize">
                         <i class="ki-duotone ki-double-left fs-2 rotate-180">
                             <span class="path1"></span>
                             <span class="path2"></span>
@@ -325,7 +312,7 @@
                     <div id="kt_app_content" class="app-content flex-column-fluid">
                         <!--begin::Content container-->
                         <div id="kt_app_content_container" class="app-container container-fluid">
-
+                            @yield('app_content')
                         </div>
                         <!--end::Content container-->
                     </div>
@@ -373,7 +360,6 @@
 </div>
 <!--end::Scrolltop-->
 
-<!--end::Modals-->
 <!--begin::Javascript-->
 <script>var hostUrl = "assets/";</script>
 <!--begin::Global Javascript Bundle(mandatory for all pages)-->
@@ -381,11 +367,8 @@
 <script src="{{URL::asset('plugins/global/scripts.bundle.js')}}"></script>
 <!--end::Global Javascript Bundle-->
 <!--begin::Vendors Javascript(used for this page only)-->
-
+@yield('js')
 <!--end::Vendors Javascript-->
-<!--begin::Custom Javascript(used for this page only)-->
-
-<!--end::Custom Javascript-->
 <!--end::Javascript-->
 </body>
 <!--end::Body-->
