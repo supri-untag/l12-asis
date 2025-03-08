@@ -9,6 +9,8 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/js/auth/sign-in.js',
+                'resources/js/auth/sign-up.js',
+                'resources/js/page/lecture/table.js',
             ],
             refresh: true,
         }),

@@ -1,8 +1,8 @@
 "use strict";
 
-var KTLectureList = function () {
+var KTThesisList = function () {
     // Define shared variables
-    var table = document.getElementById('kt_table_lecture');
+    var table = document.getElementById('kt_table_thesis');
     var datatable;
     var toolbarBase;
     var toolbarSelected;
@@ -25,7 +25,7 @@ var KTLectureList = function () {
             "lengthChange": false,
             'columnDefs': [
                 { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
-                { orderable: false, targets: 6 }, // Disable ordering on column 6 (actions)
+                { orderable: false, targets: 3 }, // Disable ordering on column 6 (actions)
             ]
         });
 
@@ -39,7 +39,7 @@ var KTLectureList = function () {
 
     // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
     var handleSearchDatatable = () => {
-        const filterSearch = document.querySelector('[data-kt-lecture-table-filter="search"]');
+        const filterSearch = document.querySelector('[data-kt-thesis-table-filter="search"]');
         filterSearch.addEventListener('keyup', function (e) {
             datatable.search(e.target.value).draw();
         });
@@ -48,8 +48,8 @@ var KTLectureList = function () {
     // Filter Datatable
     var handleFilterDatatable = () => {
         // Select filter options
-        const filterForm = document.querySelector('[data-kt-lecture-table-filter="form"]');
-        const filterButton = filterForm.querySelector('[data-kt-lecture-table-filter="filter"]');
+        const filterForm = document.querySelector('[data-kt-thesis-table-filter="form"]');
+        const filterButton = filterForm.querySelector('[data-kt-thesis-table-filter="filter"]');
         const selectOptions = filterForm.querySelectorAll('select');
 
         // Filter datatable on submit
@@ -76,12 +76,12 @@ var KTLectureList = function () {
     // Reset Filter
     var handleResetForm = () => {
         // Select reset button
-        const resetButton = document.querySelector('[data-kt-lecture-table-filter="reset"]');
+        const resetButton = document.querySelector('[data-kt-thesis-table-filter="reset"]');
 
         // Reset datatable
         resetButton.addEventListener('click', function () {
             // Select filter options
-            const filterForm = document.querySelector('[data-kt-lecture-table-filter="form"]');
+            const filterForm = document.querySelector('[data-kt-thesis-table-filter="form"]');
             const selectOptions = filterForm.querySelectorAll('select');
 
             // Reset select2 values -- more info: https://select2.org/programmatic-control/add-select-clear-items
@@ -163,10 +163,10 @@ var KTLectureList = function () {
         const checkboxes = table.querySelectorAll('[type="checkbox"]');
 
         // Select elements
-        toolbarBase = document.querySelector('[data-kt-lecture-table-toolbar="base"]');
-        toolbarSelected = document.querySelector('[data-kt-lecture-table-toolbar="selected"]');
-        selectedCount = document.querySelector('[data-kt-lecture-table-select="selected_count"]');
-        const deleteSelected = document.querySelector('[data-kt-lecture-table-select="delete_selected"]');
+        toolbarBase = document.querySelector('[data-kt-thesis-table-toolbar="base"]');
+        toolbarSelected = document.querySelector('[data-kt-thesis-table-toolbar="selected"]');
+        selectedCount = document.querySelector('[data-kt-thesis-table-select="selected_count"]');
+        const deleteSelected = document.querySelector('[data-kt-thesis-table-select="delete_selected"]');
 
         // Toggle delete selected toolbar
         checkboxes.forEach(c => {
@@ -279,10 +279,10 @@ var KTLectureList = function () {
 }();
 
 // Class definition
-var KTAddLecture = function () {
+var KTAddThesis = function () {
     // Shared variables
-    const element = document.getElementById('kt_modal_add_lecture');
-    const form = element.querySelector('#kt_modal_add_lecture_form');
+    const element = document.getElementById('kt_modal_add_thesis');
+    const form = element.querySelector('#kt_modal_add_thesis_form');
     const modal = new bootstrap.Modal(element);
 
     // Init add schedule modal
@@ -321,7 +321,7 @@ var KTAddLecture = function () {
         );
 
         // Submit button handler
-        const submitButton = element.querySelector('[data-kt-lecture-modal-action="submit"]');
+        const submitButton = element.querySelector('[data-kt-thesis-modal-action="submit"]');
         submitButton.addEventListener('click', e => {
             e.preventDefault();
 
@@ -379,7 +379,7 @@ var KTAddLecture = function () {
         });
 
         // Cancel button handler
-        const cancelButton = element.querySelector('[data-kt-lecture-modal-action="cancel"]');
+        const cancelButton = element.querySelector('[data-kt-thesis-modal-action="cancel"]');
         cancelButton.addEventListener('click', e => {
             e.preventDefault();
 
@@ -413,7 +413,7 @@ var KTAddLecture = function () {
         });
 
         // Close button handler
-        const closeButton = element.querySelector('[data-kt-lecture-modal-action="close"]');
+        const closeButton = element.querySelector('[data-kt-thesis-modal-action="close"]');
         closeButton.addEventListener('click', e => {
             e.preventDefault();
 
@@ -454,10 +454,10 @@ var KTAddLecture = function () {
         }
     };
 }();
-var KTModalExportLecture = function () {
+var KTModalExportThesis = function () {
     // Shared variables
-    const element = document.getElementById('kt_modal_export_lecture');
-    const form = element.querySelector('#kt_modal_export_lecture_form');
+    const element = document.getElementById('kt_modal_export_thesis');
+    const form = element.querySelector('#kt_modal_export_thesis_form');
     const modal = new bootstrap.Modal(element);
 
     // Init form inputs
@@ -488,7 +488,7 @@ var KTModalExportLecture = function () {
         );
 
         // Submit button handler
-        const submitButton = element.querySelector('[data-kt-lecture-modal-action="submit"]');
+        const submitButton = element.querySelector('[data-kt-thesis-modal-action="submit"]');
         submitButton.addEventListener('click', function (e) {
             e.preventDefault();
 
@@ -541,7 +541,7 @@ var KTModalExportLecture = function () {
         });
 
         // Cancel button handler
-        const cancelButton = element.querySelector('[data-kt-lecture-modal-action="cancel"]');
+        const cancelButton = element.querySelector('[data-kt-thesis-modal-action="cancel"]');
         cancelButton.addEventListener('click', function (e) {
             e.preventDefault();
 
@@ -575,7 +575,7 @@ var KTModalExportLecture = function () {
         });
 
         // Close button handler
-        const closeButton = element.querySelector('[data-kt-lecture-modal-action="close"]');
+        const closeButton = element.querySelector('[data-kt-thesis-modal-action="close"]');
         closeButton.addEventListener('click', function (e) {
             e.preventDefault();
 
@@ -617,10 +617,10 @@ var KTModalExportLecture = function () {
     };
 }();
 // On document ready
-var KTModalImportLecture= function () {
+var KTModalImportThesis= function () {
     // Shared variables
-    const element = document.getElementById('kt_modal_import_lecture');
-    const form = element.querySelector('#kt_modal_import_lecture_form');
+    const element = document.getElementById('kt_modal_import_thesis');
+    const form = element.querySelector('#kt_modal_import_thesis_form');
     const modal = new bootstrap.Modal(element);
 
     var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
@@ -666,7 +666,7 @@ var KTModalImportLecture= function () {
         );
 
         // Submit button handler
-        const submitButton = element.querySelector('[data-kt-lecture-modal-action="submit"]');
+        const submitButton = element.querySelector('[data-kt-thesis-modal-action="submit"]');
         submitButton.addEventListener('click', function (e) {
             e.preventDefault();
 
@@ -719,7 +719,7 @@ var KTModalImportLecture= function () {
         });
 
         // Cancel button handler
-        const cancelButton = element.querySelector('[data-kt-lecture-modal-action="cancel"]');
+        const cancelButton = element.querySelector('[data-kt-thesis-modal-action="cancel"]');
         cancelButton.addEventListener('click', function (e) {
             e.preventDefault();
 
@@ -753,7 +753,7 @@ var KTModalImportLecture= function () {
         });
 
         // Close button handler
-        const closeButton = element.querySelector('[data-kt-lecture-modal-action="close"]');
+        const closeButton = element.querySelector('[data-kt-thesis-modal-action="close"]');
         closeButton.addEventListener('click', function (e) {
             e.preventDefault();
 
@@ -795,8 +795,8 @@ var KTModalImportLecture= function () {
     };
 }();
 KTUtil.onDOMContentLoaded(function () {
-    KTLectureList.init();
-    KTAddLecture.init();
-    KTModalExportLecture.init();
-    KTModalImportLecture.init();
+    KTThesisList.init();
+    KTAddThesis.init();
+    KTModalExportThesis.init();
+    KTModalImportThesis.init();
 });

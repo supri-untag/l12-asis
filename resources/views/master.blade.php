@@ -14,6 +14,7 @@
     @yield('css')
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+    <link href="{{URL::asset('plugins/global/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{URL::asset('plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{URL::asset('plugins/global/style.bundle.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
@@ -129,7 +130,6 @@
                                         <span class="menu-title">System</span>
                                     </a>
                                 </div>
-                                <!--end::Menu item-->
                             </div>
                             <!--end::Menu-->
                         </div>
@@ -296,6 +296,81 @@
                                 <!--end:Menu link-->
                             </div>
                             <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <div class="menu-content">
+                                    <span class="menu-heading fw-bold text-uppercase fs-7">Progres Pengajuan</span>
+                                </div>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="#">
+											<span class="menu-icon">
+												<i class="ki-duotone ki-code fs-2">
+													<span class="path1"></span>
+													<span class="path2"></span>
+													<span class="path3"></span>
+													<span class="path4"></span>
+												</i>
+											</span>
+                                    <span class="menu-title">Permohonan Judul</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="#">
+											<span class="menu-icon">
+												<i class="ki-duotone ki-note fs-2">
+													<span class="path1"></span>
+													<span class="path2"></span>
+												</i>
+											</span>
+                                    <span class="menu-title">Permohonan Proposal</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="#">
+											<span class="menu-icon">
+												<i class="ki-duotone ki-note-2 fs-2">
+													<span class="path1"></span>
+													<span class="path2"></span>
+													<span class="path3"></span>
+													<span class="path4"></span>
+												</i>
+											</span>
+                                    <span class="menu-title">SHP</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="#">
+											<span class="menu-icon">
+												<i class="ki-duotone ki-book-open fs-2">
+													<span class="path1"></span>
+													<span class="path2"></span>
+													<span class="path3"></span>
+													<span class="path4"></span>
+												</i>
+											</span>
+                                    <span class="menu-title">Tesis</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
                         </div>
                         <!--end::Menu-->
                     </div>
@@ -365,6 +440,7 @@
 <!--begin::Global Javascript Bundle(mandatory for all pages)-->
 <script src="{{URL::asset('plugins/global/plugins.bundle.js')}}"></script>
 <script src="{{URL::asset('plugins/global/scripts.bundle.js')}}"></script>
+<script src="{{URL::asset('plugins/global/datatables/datatables.bundle.js')}}"></script>
 <!--end::Global Javascript Bundle-->
 <!--begin::Vendors Javascript(used for this page only)-->
 @yield('js')

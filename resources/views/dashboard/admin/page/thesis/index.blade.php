@@ -12,7 +12,7 @@
                         <span class="path1"></span>
                         <span class="path2"></span>
                     </i>
-                    <input type="text" data-kt-lecture-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Cari dosen.." />
+                    <input type="text" data-kt-thesis-table-filter="search" class="form-control form-control-solid w-250px ps-13" placeholder="Cari dosen.." />
                 </div>
                 <!--end::Search-->
             </div>
@@ -20,7 +20,7 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-lecture-table-toolbar="base">
+                <div class="d-flex justify-content-end" data-kt-thesis-table-toolbar="base">
                     <!--begin::Filter-->
                     <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                         <i class="ki-duotone ki-filter fs-2">
@@ -38,11 +38,11 @@
                         <div class="separator border-gray-200"></div>
                         <!--end::Separator-->
                         <!--begin::Content-->
-                        <div class="px-7 py-5" data-kt-lecture-table-filter="form">
+                        <div class="px-7 py-5" data-kt-thesis-table-filter="form">
                             <!--begin::Input group-->
                             <div class="mb-10">
                                 <label class="form-label fs-6 fw-semibold">Jabatan Fungsional</label>
-                                <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-lecture-table-filter="role" data-hide-search="true">
+                                <select class="form-select form-select-solid fw-bold" data-kt-select2="true" data-placeholder="Select option" data-allow-clear="true" data-kt-thesis-table-filter="role" data-hide-search="true">
                                     <option></option>
                                     <option value="#">Lorem Filter</option>
                                 </select>
@@ -50,8 +50,8 @@
                             <!--end::Input group-->
                             <!--begin::Actions-->
                             <div class="d-flex justify-content-end">
-                                <button type="reset" class="btn btn-light btn-active-light-primary fw-semibold me-2 px-6" data-kt-menu-dismiss="true" data-kt-lecture-table-filter="reset">Reset</button>
-                                <button type="submit" class="btn btn-primary fw-semibold px-6" data-kt-menu-dismiss="true" data-kt-lecture-table-filter="filter">Apply</button>
+                                <button type="reset" class="btn btn-light btn-active-light-primary fw-semibold me-2 px-6" data-kt-menu-dismiss="true" data-kt-thesis-table-filter="reset">Reset</button>
+                                <button type="submit" class="btn btn-primary fw-semibold px-6" data-kt-menu-dismiss="true" data-kt-thesis-table-filter="filter">Apply</button>
                             </div>
                             <!--end::Actions-->
                         </div>
@@ -60,34 +60,34 @@
                     <!--end::Menu 1-->
                     <!--end::Filter-->
                     <!--begin::Export-->
-                    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_export_lecture">
+                    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_export_thesis">
                         <i class="ki-duotone ki-exit-up fs-2">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </i>Export</button>
                     <!--end::Export-->
                     <!--begin::Import-->
-                    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_import_lecture">
+                    <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_modal_import_thesis">
                         <i class="ki-duotone ki-exit-down fs-2">
                             <span class="path1"></span>
                             <span class="path2"></span>
                         </i>Import</button>
                     <!--end::Import-->
                     <!--begin::Add user-->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_lecture">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_thesis">
                         <i class="ki-duotone ki-plus fs-2"></i>Tambah</button>
                     <!--end::Add user-->
                 </div>
                 <!--end::Toolbar-->
                 <!--begin::Group actions-->
-                <div class="d-flex justify-content-end align-items-center d-none" data-kt-lecture-table-toolbar="selected">
+                <div class="d-flex justify-content-end align-items-center d-none" data-kt-thesis-table-toolbar="selected">
                     <div class="fw-bold me-5">
-                        <span class="me-2" data-kt-lecture-table-select="selected_count"></span>Selected</div>
-                    <button type="button" class="btn btn-danger" data-kt-lecture-table-select="delete_selected">Delete Selected</button>
+                        <span class="me-2" data-kt-thesis-table-select="selected_count"></span>Selected</div>
+                    <button type="button" class="btn btn-danger" data-kt-thesis-table-select="delete_selected">Delete Selected</button>
                 </div>
                 <!--end::Group actions-->
                 <!--begin::Modal - Adjust Balance-->
-                <div class="modal fade" id="kt_modal_export_lecture" tabindex="-1" aria-hidden="true">
+                <div class="modal fade" id="kt_modal_export_thesis" tabindex="-1" aria-hidden="true">
                     <!--begin::Modal dialog-->
                     <div class="modal-dialog modal-dialog-centered mw-650px">
                         <!--begin::Modal content-->
@@ -98,7 +98,7 @@
                                 <h2 class="fw-bold">Export Users</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
-                                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-lecture-modal-action="close">
+                                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-thesis-modal-action="close">
                                     <i class="ki-duotone ki-cross fs-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
@@ -110,7 +110,7 @@
                             <!--begin::Modal body-->
                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
-                                <form id="kt_modal_export_lecture_form" class="form" action="#">
+                                <form id="kt_modal_export_thesis_form" class="form" action="#">
                                     <!--begin::Input group-->
                                     <div class="fv-row mb-10">
                                         <!--begin::Label-->
@@ -142,8 +142,8 @@
                                     <!--end::Input group-->
                                     <!--begin::Actions-->
                                     <div class="text-center">
-                                        <button type="reset" class="btn btn-light me-3" data-kt-lecture-modal-action="cancel">Discard</button>
-                                        <button type="submit" class="btn btn-primary" data-kt-lecture-modal-action="submit">
+                                        <button type="reset" class="btn btn-light me-3" data-kt-thesis-modal-action="cancel">Discard</button>
+                                        <button type="submit" class="btn btn-primary" data-kt-thesis-modal-action="submit">
                                             <span class="indicator-label">Submit</span>
                                             <span class="indicator-progress">Please wait...
 																			<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -161,7 +161,7 @@
                 </div>
                 <!--end::Modal - New Card-->
                 <!--begin::Modal - Adjust Balance-->
-                <div class="modal fade" id="kt_modal_import_lecture" tabindex="-1" aria-hidden="true">
+                <div class="modal fade" id="kt_modal_import_thesis" tabindex="-1" aria-hidden="true">
                     <!--begin::Modal dialog-->
                     <div class="modal-dialog modal-dialog-centered mw-650px">
                         <!--begin::Modal content-->
@@ -172,7 +172,7 @@
                                 <h2 class="fw-bold">Export Users</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
-                                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-lecture-modal-action="close">
+                                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-thesis-modal-action="close">
                                     <i class="ki-duotone ki-cross fs-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
@@ -184,7 +184,7 @@
                             <!--begin::Modal body-->
                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
-                                <form id="kt_modal_import_lecture_form" class="form" action="#">
+                                <form id="kt_modal_import_thesis_form" class="form" action="#">
                                     <!--begin::Dropzone-->
                                     <!--begin::Input group-->
                                     <div class="fv-row mb-10">
@@ -207,8 +207,8 @@
 
                                     <!--begin::Actions-->
                                     <div class="text-center">
-                                        <button type="reset" class="btn btn-light me-3" data-kt-lecture-modal-action="cancel">Discard</button>
-                                        <button type="submit" class="btn btn-primary" data-kt-lecture-modal-action="submit">
+                                        <button type="reset" class="btn btn-light me-3" data-kt-thesis-modal-action="cancel">Discard</button>
+                                        <button type="submit" class="btn btn-primary" data-kt-thesis-modal-action="submit">
                                             <span class="indicator-label">Submit</span>
                                             <span class="indicator-progress">Please wait...
 																			<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -227,18 +227,18 @@
                 <!--end::Modal - New Card-->
 
                 <!--begin::Modal - Add task-->
-                <div class="modal fade" id="kt_modal_add_lecture" tabindex="-1" aria-hidden="true">
+                <div class="modal fade" id="kt_modal_add_thesis" tabindex="-1" aria-hidden="true">
                     <!--begin::Modal dialog-->
                     <div class="modal-dialog modal-dialog-centered mw-650px">
                         <!--begin::Modal content-->
                         <div class="modal-content">
                             <!--begin::Modal header-->
-                            <div class="modal-header" id="kt_modal_add_lecture_header">
+                            <div class="modal-header" id="kt_modal_add_thesis_header">
                                 <!--begin::Modal title-->
                                 <h2 class="fw-bold">Tambah Dosen</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
-                                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-lecture-modal-action="close">
+                                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-thesis-modal-action="close">
                                     <i class="ki-duotone ki-cross fs-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
@@ -250,9 +250,9 @@
                             <!--begin::Modal body-->
                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                 <!--begin::Form-->
-                                <form id="kt_modal_add_lecture_form" class="form" action="#">
+                                <form id="kt_modal_add_thesis_form" class="form" action="#">
                                     <!--begin::Scroll-->
-                                    <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_lecture_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_lecture_header" data-kt-scroll-wrappers="#kt_modal_add_lecture_scroll" data-kt-scroll-offset="300px">
+                                    <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_thesis_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_thesis_header" data-kt-scroll-wrappers="#kt_modal_add_thesis_scroll" data-kt-scroll-offset="300px">
                                         <!--begin::Input group-->
                                         <div class="fv-row mb-7">
                                             <!--begin::Label-->
@@ -365,8 +365,8 @@
                                     <!--end::Scroll-->
                                     <!--begin::Actions-->
                                     <div class="text-center pt-15">
-                                        <button type="reset" class="btn btn-light me-3" data-kt-lecture-modal-action="cancel">Discard</button>
-                                        <button type="submit" class="btn btn-primary" data-kt-lecture-modal-action="submit">
+                                        <button type="reset" class="btn btn-light me-3" data-kt-thesis-modal-action="cancel">Discard</button>
+                                        <button type="submit" class="btn btn-primary" data-kt-thesis-modal-action="submit">
                                             <span class="indicator-label">Submit</span>
                                             <span class="indicator-progress">Please wait...
 																			<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -390,19 +390,18 @@
         <!--begin::Card body-->
         <div class="card-body py-4">
             <!--begin::Table-->
-            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_lecture">
+            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_thesis">
                 <thead>
                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                     <th class="w-10px pe-2">
                         <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                            <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_lecture .form-check-input" value="1" />
+                            <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_table_thesis .form-check-input" value="1" />
                         </div>
                     </th>
                     <th class="min-w-125px">Nama</th>
-                    <th class="min-w-125px">NIDN</th>
-                    <th class="min-w-125px">Jabatan Fungsional</th>
-                    <th class="min-w-125px">Golongan</th>
-                    <th class="min-w-125px">NUPTK</th>
+                    <th class="min-w-125px">NPM</th>
+                    <th class="min-w-125px">Judul</th>
+                    <th class="min-w-125px">Tahun</th>
                     <th class="text-end min-w-100px">Actions</th>
                 </tr>
                 </thead>
@@ -413,27 +412,10 @@
                             <input class="form-check-input" type="checkbox" value="1" />
                         </div>
                     </td>
-                    <td class="d-flex align-items-center">
-                        <!--begin:: Avatar -->
-                        <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                            <a href="#">
-                                <div class="symbol-label">
-                                    <img src="{{ Vite::asset('resources/assets/media/avatars/300-5.jpg') }}" alt="Nama Dosen" class="w-100" />
-                                </div>
-                            </a>
-                        </div>
-                        <!--end::Avatar-->
-                        <!--begin::User details-->
-                        <div class="d-flex flex-column">
-                            <a href="#" class="text-gray-800 text-hover-primary mb-1">Nama Dosen</a>
-                            <span>example@mail.com</span>
-                        </div>
-                        <!--begin::User details-->
-                    </td>
-                    <td>06100345</td>
-                    <td>Profesor</td>
-                    <td>IV/C</td>
-                    <td>2757741642130072</td>
+                    <td>SUPRIYANTO</td>
+                    <td>22170670090</td>
+                    <td>KALKUASI METROMIKA DENGAN KEBUTUHAN ANTARA 2 DAN 3 FALS LOGIC YANG DI SESUIAKAN OLEH ALFRED</td>
+                    <td>2024</td>
                     <td class="text-end">
                         <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                             <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
@@ -462,5 +444,5 @@
     <!--end::Card-->
 @endsection
 @section('js')
-    @vite('resources/js/page/lecture/table.js')
+    @vite('resources/js/page/thesis/table.js')
 @endsection
