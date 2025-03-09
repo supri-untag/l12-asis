@@ -59,7 +59,10 @@
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-center flex-column flex-column-fluid pb-15 pb-lg-20">
                         <!--begin::Form-->
-                        <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="../../demo1/dist/index.html" action="#">
+                        <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="{{route('AuthCheck')}}" action="{{route('signInProses')}}">
+
+                            @csrf
+
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <!--begin::Title-->
@@ -71,7 +74,7 @@
                             <!--begin::Input group=-->
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
-                                <input type="text" placeholder="Email/Username" name="email" autocomplete="off" class="form-control bg-transparent" />
+                                <input type="text" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" />
                                 <!--end::Email-->
                             </div>
                             <!--end::Input group=-->
@@ -103,8 +106,8 @@
                             </div>
                             <!--end::Submit button-->
                             <!--begin::Sign up-->
-                            <div class="text-gray-500 text-center fw-semibold fs-6">Not a Member yet?
-                                <a href="../../demo1/dist/authentication/layouts/overlay/sign-up.html" class="link-primary">Sign up</a></div>
+                            <div class="text-gray-500 text-center fw-semibold fs-6">Belum Punya Akun?
+                                <a href="{{route('signUpIndex')}}" class="link-primary">Buat</a></div>
                             <!--end::Sign up-->
                         </form>
                         <!--end::Form-->

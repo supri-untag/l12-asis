@@ -15,6 +15,9 @@ return new class extends Migration
             $table->uuid("id");
             $table->string("nim");
             $table->string("name");
+            $table->string("email");
+            $table->string("place_date");
+            $table->date("birth_date");
             $table->timestamps();
         });
     }

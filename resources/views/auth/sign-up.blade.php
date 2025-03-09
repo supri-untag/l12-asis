@@ -59,14 +59,21 @@
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-center flex-column flex-column-fluid pb-15 pb-lg-20">
                         <!--begin::Form-->
-                        <form class="form w-100" novalidate="novalidate" id="kt_sign_up_form" data-kt-redirect-url="../../demo1/dist/authentication/layouts/overlay/sign-in.html" action="#">
+                        <form class="form w-100" novalidate="novalidate" id="kt_sign_up_form" data-kt-redirect-url="{{route('signInIndex')}}" action="{{route('signUpProses')}}">
                             <!--begin::Heading-->
+                            @csrf
                             <div class="text-center mb-11">
                                 <!--begin::Title-->
                                 <h1 class="text-dark fw-bolder mb-3">Buat Akun</h1>
                                 <!--end::Title-->
                             </div>
                             <!--begin::Heading-->
+                            <!--begin::Input group=-->
+                            <div class="fv-row mb-8">
+                                <!--begin::Email-->
+                                <input type="text" placeholder="NPM" name="nim" autocomplete="off" class="form-control bg-transparent" />
+                                <!--end::Email-->
+                            </div>
                             <!--begin::Input group=-->
                             <div class="fv-row mb-8">
                                 <!--begin::Email-->
@@ -97,7 +104,7 @@
                                 </div>
                                 <!--end::Wrapper-->
                                 <!--begin::Hint-->
-                                <div class="text-muted">Use 8 or more characters with a mix of letters, numbers & symbols.</div>
+                                <div class="text-muted">Gunakan 8 karakter atau lebih dengan campuran huruf, angka, dan simbol.</div>
                                 <!--end::Hint-->
                             </div>
                             <!--end::Input group=-->
@@ -112,8 +119,8 @@
                             <div class="fv-row mb-8">
                                 <label class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" name="toc" value="1" />
-                                    <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">I Accept the
-											<a href="#" class="ms-1 link-primary">Terms</a></span>
+                                    <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">Terima
+											<a href="#" class="ms-1 link-primary"> kebijakan dan ketentuan</a></span>
                                 </label>
                             </div>
                             <!--end::Accept-->
@@ -121,18 +128,18 @@
                             <div class="d-grid mb-10">
                                 <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
                                     <!--begin::Indicator label-->
-                                    <span class="indicator-label">Sign up</span>
+                                    <span class="indicator-label">Buat</span>
                                     <!--end::Indicator label-->
                                     <!--begin::Indicator progress-->
-                                    <span class="indicator-progress">Please wait...
+                                    <span class="indicator-progress">Tolong Tunggu...
 											<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                     <!--end::Indicator progress-->
                                 </button>
                             </div>
                             <!--end::Submit button-->
                             <!--begin::Sign up-->
-                            <div class="text-gray-500 text-center fw-semibold fs-6">Already have an Account?
-                                <a href="../../demo1/dist/authentication/layouts/overlay/sign-in.html" class="link-primary fw-semibold">Sign in</a></div>
+                            <div class="text-gray-500 text-center fw-semibold fs-6">Sudah Punya Akun?
+                                <a href="{{route('signInIndex')}}" class="link-primary fw-semibold">Masuk</a></div>
                             <!--end::Sign up-->
                         </form>
                         <!--end::Form-->

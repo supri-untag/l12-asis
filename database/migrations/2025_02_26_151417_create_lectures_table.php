@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('lectures', function (Blueprint $table) {
             $table->uuid("id");
-            $table->string("nidn");
+            $table->string("nidn")->unique();
             $table->string("name");
-            $table->integer("quota");
+            $table->string("email");
+            $table->string("jafa");
+            $table->string("nuptk")->nullable();
             $table->timestamps();
         });
     }

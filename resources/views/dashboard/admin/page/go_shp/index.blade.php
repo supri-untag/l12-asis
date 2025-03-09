@@ -3,8 +3,8 @@
     <!--begin::Toolbar-->
     <div class="d-flex flex-wrap flex-stack mb-6">
         <!--begin::Heading-->
-        <h3 class="fw-bold my-2">Pengajuan Judul
-            <span class="fs-6 text-gray-400 fw-semibold ms-1">Tesis dan Pembimbing </span></h3>
+        <h3 class="fw-bold my-2">Semonar Hasil Penelitian
+            <span class="fs-6 text-gray-400 fw-semibold ms-1">Tesis</span></h3>
         <!--end::Heading-->
         <!--begin::Actions-->
         <div class="d-flex align-items-center gap-2 gap-lg-3">
@@ -365,6 +365,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 @section('js')
 {{--    @vite('resources/js/page/articles/table.js')--}}

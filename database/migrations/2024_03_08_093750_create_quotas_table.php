@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->uuid("id");
-            $table->string("title");
-            $table->string("journal");
-            $table->string("issue");
-            $table->string("numb");
-            $table->string("url");
-            $table->string("mhs_id");
+        Schema::create('quotas', function (Blueprint $table) {
+            $table->uuid('id');
+            $table->string('smt');
+            $table->integer('max');
+            $table->string('nidn');
+            $table->integer('quota_at_smt');
+            $table->string('smt_id');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('quotas');
     }
 };

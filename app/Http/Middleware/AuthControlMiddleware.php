@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class AuthControlMiddleware
 {
     /**
      * Handle an incoming request.
@@ -20,8 +20,10 @@ class AdminMiddleware
             return redirect(route('signInIndex'));
         }
         if (Auth::user()->role == 'admin' ){
-
-            return $next($request);
+            return redirect(route('adminIndex'));
+        }
+        if (Auth::user()->role == 'student' ){
+            return redirect(route('studentIndex'));
         }
         return redirect('/');
     }

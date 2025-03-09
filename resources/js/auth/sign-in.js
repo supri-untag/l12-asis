@@ -21,14 +21,18 @@ var KTSigninGeneral = function() {
                                 message: 'The value is not a valid email address',
                             },
                             notEmpty: {
-                                message: 'Email address is required'
+                                message: 'Email harus diisi'
                             }
                         }
                     },
                     'password': {
                         validators: {
                             notEmpty: {
-                                message: 'The password is required'
+                                message: 'Password harus diisi'
+                            },
+                            stringLength: {
+                                min: 8,
+                                message: 'Kurang dari 8 karater'
                             }
                         }
                     }
@@ -45,67 +49,6 @@ var KTSigninGeneral = function() {
         );
     }
 
-    var handleSubmitDemo = function(e) {
-        // Handle form submit
-        submitButton.addEventListener('click', function (e) {
-            // Prevent button default action
-            e.preventDefault();
-
-            // Validate form
-            validator.validate().then(function (status) {
-                if (status == 'Valid') {
-                    // Show loading indication
-                    submitButton.setAttribute('data-kt-indicator', 'on');
-
-                    // Disable button to avoid multiple click
-                    submitButton.disabled = true;
-
-
-                    // Simulate ajax request
-                    setTimeout(function() {
-                        // Hide loading indication
-                        submitButton.removeAttribute('data-kt-indicator');
-
-                        // Enable button
-                        submitButton.disabled = false;
-
-                        // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                        Swal.fire({
-                            text: "You have successfully logged in!",
-                            icon: "success",
-                            buttonsStyling: false,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn btn-primary"
-                            }
-                        }).then(function (result) {
-                            if (result.isConfirmed) {
-                                form.querySelector('[name="email"]').value= "";
-                                form.querySelector('[name="password"]').value= "";
-
-                                //form.submit(); // submit form
-                                var redirectUrl = form.getAttribute('data-kt-redirect-url');
-                                if (redirectUrl) {
-                                    location.href = redirectUrl;
-                                }
-                            }
-                        });
-                    }, 2000);
-                } else {
-                    // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
-                    Swal.fire({
-                        text: "Sorry, looks like there are some errors detected, please try again.",
-                        icon: "error",
-                        buttonsStyling: false,
-                        confirmButtonText: "Ok, got it!",
-                        customClass: {
-                            confirmButton: "btn btn-primary"
-                        }
-                    });
-                }
-            });
-        });
-    }
 
     var handleSubmitAjax = function(e) {
         // Handle form submit
@@ -117,36 +60,54 @@ var KTSigninGeneral = function() {
             validator.validate().then(function (status) {
                 if (status == 'Valid') {
                     // Hide loading indication
-                    submitButton.removeAttribute('data-kt-indicator');
+                    submitButton.setAttribute('data-kt-indicator', 'on');
 
                     // Enable button
-                    submitButton.disabled = false;
+                    submitButton.disabled = true;
 
                     // Check axios library docs: https://axios-http.com/docs/intro
-                    axios.post('/your/ajax/login/url', {
+                    axios.post(form.getAttribute('action'), {
                         email: form.querySelector('[name="email"]').value,
-                        password: form.querySelector('[name="password"]').value
+                        password: form.querySelector('[name="password"]').value,
+                        token: form.querySelector('[name="_token"]').value
                     }).then(function (response) {
-                        if (response) {
+                        if (response.data.error_code === 0) {
+
+                            console.log(response)
+                            submitButton.setAttribute('data-kt-indicator', 'off');
+                            submitButton.disabled = false;
+
                             form.querySelector('[name="email"]').value= "";
                             form.querySelector('[name="password"]').value= "";
-
-                            const redirectUrl = form.getAttribute('data-kt-redirect-url');
-
-                            if (redirectUrl) {
-                                location.href = redirectUrl;
-                            }
+                            Swal.fire({
+                                text: response.data.message,
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            }).then(function (result) {
+                                if (result.isConfirmed){
+                                    var redirectUrl = form.getAttribute('data-kt-redirect-url')
+                                    if (redirectUrl){
+                                        location.href = redirectUrl;
+                                    }
+                                }
+                            })
                         } else {
                             // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                             Swal.fire({
-                                text: "Sorry, the email or password is incorrect, please try again.",
+                                text: response.data.message,
                                 icon: "error",
                                 buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
+                                confirmButtonText: "Ok, Perbaiki",
                                 customClass: {
                                     confirmButton: "btn btn-primary"
                                 }
                             });
+                            submitButton.disabled = false;
+                            submitButton.setAttribute('data-kt-indicator', 'off');
                         }
                     }).catch(function (error) {
                         Swal.fire({
@@ -161,6 +122,7 @@ var KTSigninGeneral = function() {
                     });
                 } else {
                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+
                     Swal.fire({
                         text: "Sorry, looks like there are some errors detected, please try again.",
                         icon: "error",
@@ -183,8 +145,7 @@ var KTSigninGeneral = function() {
             submitButton = document.querySelector('#kt_sign_in_submit');
 
             handleValidation();
-            handleSubmitDemo(); // used for demo purposes only, if you use the below ajax version you can uncomment this one
-            //handleSubmitAjax(); // use for ajax submit
+            handleSubmitAjax(); // use for ajax submit
         }
     };
 }();

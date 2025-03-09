@@ -15,17 +15,10 @@ var KTSignupGeneral = function() {
             form,
             {
                 fields: {
-                    'first-name': {
+                    'nim': {
                         validators: {
                             notEmpty: {
-                                message: 'First Name is required'
-                            }
-                        }
-                    },
-                    'last-name': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Last Name is required'
+                                message: 'NPM Wajib diisi'
                             }
                         }
                     },
@@ -33,20 +26,24 @@ var KTSignupGeneral = function() {
                         validators: {
                             regexp: {
                                 regexp: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                message: 'The value is not a valid email address',
+                                message: 'Format Email Tidak sesuai',
                             },
                             notEmpty: {
-                                message: 'Email address is required'
+                                message: 'Email harus diisi'
                             }
                         }
                     },
                     'password': {
                         validators: {
                             notEmpty: {
-                                message: 'The password is required'
+                                message: 'Password harus diisi'
+                            },
+                            stringLength: {
+                                min: 8,
+                                message: 'Kurang dari 8 karater'
                             },
                             callback: {
-                                message: 'Please enter valid password',
+                                message: 'Please enter dengan betul',
                                 callback: function(input) {
                                     if (input.value.length > 0) {
                                         return validatePassword();
@@ -58,20 +55,20 @@ var KTSignupGeneral = function() {
                     'confirm-password': {
                         validators: {
                             notEmpty: {
-                                message: 'The password confirmation is required'
+                                message: 'Konfirmasi Password wajib diisi'
                             },
                             identical: {
                                 compare: function() {
                                     return form.querySelector('[name="password"]').value;
                                 },
-                                message: 'The password and its confirm are not the same'
+                                message: 'Password dan Konfirmasi Password tidak sama'
                             }
                         }
                     },
                     'toc': {
                         validators: {
                             notEmpty: {
-                                message: 'You must accept the terms and conditions'
+                                message: 'Anda harus terima kebijakan dan ketentuan'
                             }
                         }
                     }
@@ -104,38 +101,72 @@ var KTSignupGeneral = function() {
 
                     // Disable button to avoid multiple click
                     submitButton.disabled = true;
-
-                    // Simulate ajax request
-                    setTimeout(function() {
-                        // Hide loading indication
-                        submitButton.removeAttribute('data-kt-indicator');
-
-                        // Enable button
-                        submitButton.disabled = false;
-
-                        // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
+                    let url = form.getAttribute('action')
+                    axios.post(url, {
+                        nim: form.querySelector('[name="nim"]').value,
+                        email: form.querySelector('[name="email"]').value,
+                        password: form.querySelector('[name="password"]').value,
+                        token: form.querySelector('[name="_token"]').value
+                    }).then(function (response) {
+                        form.querySelector('[name="nim"]').value= "";
+                        form.querySelector('[name="email"]').value= "";
+                        form.querySelector('[name="password"]').value= "";
+                        switch (response.data.error_code) {
+                            case 0:
+                                Swal.fire({
+                                    text: response.data.message,
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                }).then(function (result) {
+                                    if (result.isConfirmed){
+                                        var redirectUrl = form.getAttribute('data-kt-redirect-url')
+                                        if (redirectUrl){
+                                            location.href = redirectUrl;
+                                        }
+                                    }
+                                })
+                            break
+                            case 1:
+                                Swal.fire({
+                                    text: response.data.message,
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, perbaiki",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                });
+                                submitButton.disabled = false;
+                                submitButton.setAttribute('data-kt-indicator', 'off');
+                                break
+                            default:
+                                Swal.fire({
+                                    text: "Maaf, "+ response.data.message,
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn btn-primary"
+                                    }
+                                });
+                                submitButton.disabled = false;
+                                submitButton.setAttribute('data-kt-indicator', 'off');
+                        }
+                    }).catch(function (error) {
                         Swal.fire({
-                            text: "You have successfully reset your password!",
-                            icon: "success",
+                            text: "Sorry, looks like there are some errors detected, please try again.",
+                            icon: "error",
                             buttonsStyling: false,
                             confirmButtonText: "Ok, got it!",
                             customClass: {
                                 confirmButton: "btn btn-primary"
                             }
-                        }).then(function (result) {
-                            if (result.isConfirmed) {
-                                form.reset();  // reset form
-                                passwordMeter.reset();  // reset password meter
-                                //form.submit();
-
-                                //form.submit(); // submit form
-                                var redirectUrl = form.getAttribute('data-kt-redirect-url');
-                                if (redirectUrl) {
-                                    location.href = redirectUrl;
-                                }
-                            }
                         });
-                    }, 1500);
+                    });
                 } else {
                     // Show error popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                     Swal.fire({

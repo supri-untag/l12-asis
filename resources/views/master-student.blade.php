@@ -2,7 +2,7 @@
 <html lang="en">
 <!--begin::Head-->
 <head><base href=""/>
-    <title>Display Test</title>
+    <title>Student</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="{{ Vite::asset('resources/assets/media/favicon.ico') }}" />
@@ -235,63 +235,14 @@
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="#">
 											<span class="menu-icon">
-												<i class="ki-duotone ki-user fs-2">
-													<span class="path1"></span>
-													<span class="path2"></span>
-												</i>
-											</span>
-                                    <span class="menu-title">Dosen</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
-											<span class="menu-icon">
 												<i class="ki-duotone ki-profile-user fs-2">
 													<span class="path1"></span>
 													<span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                    <span class="path4"></span>
+													<span class="path3"></span>
+													<span class="path4"></span>
 												</i>
 											</span>
-                                    <span class="menu-title">Mahasiswa</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
-											<span class="menu-icon">
-												<i class="ki-duotone ki-notepad-bookmark fs-2">
-                                                    <span class="path1"></span>
-                                                    <span class="path2"></span>
-                                                    <span class="path3"></span>
-                                                    <span class="path4"></span>
-                                                    <span class="path5"></span>
-                                                    <span class="path6"></span>
-												</i>
-											</span>
-                                    <span class="menu-title">Tesis</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
-											<span class="menu-icon">
-												<i class="ki-duotone ki-some-files fs-2">
-													<span class="path1"></span>
-													<span class="path2"></span>
-												</i>
-											</span>
-                                    <span class="menu-title">Jurnal</span>
+                                    <span class="menu-title">Data Mahasiswa</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
@@ -300,7 +251,7 @@
                             <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <div class="menu-content">
-                                    <span class="menu-heading fw-bold text-uppercase fs-7">Progres Pengajuan</span>
+                                    <span class="menu-heading fw-bold text-uppercase fs-7">Progres Tesis</span>
                                 </div>
                                 <!--end:Menu link-->
                             </div>
@@ -367,6 +318,21 @@
 												</i>
 											</span>
                                     <span class="menu-title">Tesis</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link" href="#">
+											<span class="menu-icon">
+												<i class="ki-duotone ki-tablet-text-up  fs-2">
+													<span class="path1"></span>
+													<span class="path2"></span>
+												</i>
+											</span>
+                                    <span class="menu-title">Jurnal</span>
                                 </a>
                                 <!--end:Menu link-->
                             </div>
