@@ -14,7 +14,7 @@ class Quota extends Model
     protected $table = "quotas";
 
     // ** Guard ID for not fill
-    protected $guarded = "id";
+    protected $guarded = ["id"];
 
     public function lectures() : BelongsTo
     {

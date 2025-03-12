@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('theses', function (Blueprint $table) {
             $table->uuid("id");
-            $table->string("title_final")->nullable();
+            $table->text("title_final")->nullable();
             $table->string("smt")->nullable();
             $table->string("year")->nullable();
-            $table->string("das_sein")->nullable();
-            $table->string("das_sollen")->nullable();
-            $table->string("gaps")->nullable();
-            $table->string("formulation")->nullable();
-            $table->string("title_promise")->nullable();
-            $table->string("title_proposal")->nullable();
-            $table->string("title_shp")->nullable();
-            $table->string("title_thesis")->nullable();
+            $table->text("das_sein")->nullable();
+            $table->text("das_sollen")->nullable();
+            $table->text("gaps")->nullable();
+            $table->text("formulation")->nullable();
+            $table->text("title_promise")->nullable();
+            $table->text("title_proposal")->nullable();
+            $table->text("title_shp")->nullable();
+            $table->text("title_thesis")->nullable();
             $table->string("status_promise")->nullable();
             $table->string("status_proposal")->nullable();
             $table->string("status_shp")->nullable();
@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string("disabled_proposal")->nullable();
             $table->string("disabled_shp")->nullable();
             $table->string("disabled_thesis")->nullable();
-            $table->string("student_id")->unique()->nullable();
+            $table->string("student_id")->nullable();
             $table->string("leader")->nullable();
             $table->string("promotor")->nullable();
             $table->string("method")->nullable();

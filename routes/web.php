@@ -13,6 +13,10 @@ Route::middleware('guest')->group( function () {
     Route::post('/sign-up', [\App\Http\Controllers\AuthenticationController::class, 'signUpProses'])->name('signUpProses');
 
 });
+Route::middleware('auth')->group( function () {
+    Route::post('/sign-out', [\App\Http\Controllers\AuthenticationController::class, 'signOut'])->name('signOut');
+});
+
 Route::middleware(\App\Http\Middleware\AuthControlMiddleware::class)->group( function (){
     Route::get('/who-auth', function (){
         return true;
@@ -29,81 +33,38 @@ Route::middleware(\App\Http\Middleware\AuthControlMiddleware::class)->group( fun
 
 Route::middleware(\App\Http\Middleware\AdminMiddleware::class)->group( function () {
     Route::prefix('/admin')->group( function (){
-        Route::get('/', function () {
-            return "admin";
-        })->name('adminIndex');
-    });
-});
-Route::middleware(\App\Http\Middleware\StudentMiddleware::class)->group( function () {
-    Route::prefix('/student')->group(function (){
-        Route::get('/', function () {
-            return "student";
-        })->name('studentIndex');
+        Route::get('/', [\App\Http\Controllers\AdminController::class, 'adminIndex'])->name('adminIndex');
     });
 });
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::middleware(\App\Http\Middleware\StudentMiddleware::class)->group( function () {
+    Route::prefix('/student')->group(function (){
+        Route::get('/',[\App\Http\Controllers\StudentController::class, 'Index'])->name('studentIndex');
+        Route::get('/go_promise', [\App\Http\Controllers\GoPromiseController::class,'StudentGoPromise'])->name('StudentGoPromise');
+        Route::post('/go_promise', [\App\Http\Controllers\GoPromiseController::class,'StudentGoPromiseAdd'])->name('StudentGoPromiseAdd');
+        Route::get('/go_shp', [\App\Http\Controllers\GoShpController::class,'StudentGoSHP'])->name('StudentGoSHP');
+        Route::get('/go_proposal', [\App\Http\Controllers\GoProposalController::class, 'StudentGoProposal'])->name('StudentGoProposal');
+        Route::get('go_thesis', [\App\Http\Controllers\GoThesisController::class, 'StudentGoThesis'])->name('StudentGoThesis');
+        Route::get('/articles', [\App\Http\Controllers\ArticlesController::class, 'StudentArticles'])->name('StudentArticles');
+    });
+});
 
 Route::get('/pasing', [\App\Http\Controllers\PasingTest::class, 'index']);
 
-Route::get('/display', function () {
-    return view('display');
-});
-//Route::get('/sign-in', function () {
-//    return view('auth.sign-in');
-//});
-//Route::get('/sign-up', function () {
-//    return view('auth.sign-up');
-//});
-
-Route::get('/admin/lecture', function () {
-    return view('dashboard.admin.page.lecture.index');
-});
-Route::get('/admin/student', function () {
-    return view('dashboard.admin.page.student.index');
+Route::prefix('/admin')->group( function (){
+    Route::get('lecture', [\App\Http\Controllers\LectureController::class,'lectureIndex'])->name('lectureIndex');
+    Route::get('student', [\App\Http\Controllers\StudentController::class,'studentIndexDash'])->name('studentIndexDash');
+    Route::get('thesis', [\App\Http\Controllers\ThesisController::class,'thesisIndex'])->name('thesisIndex');
+    Route::get('/go_promise', [\App\Http\Controllers\GoPromiseController::class,'AdminGoPromise'])->name('AdminGoPromise');
+    Route::post('/go_promise_getByID', [\App\Http\Controllers\GoPromiseController::class,'AdminGoPromiseGetByID'])->name('AdminGoPromiseGetByID');
+    Route::post('/go_promise_accept', [\App\Http\Controllers\GoPromiseController::class,'AdminGoPromiseAccept'])->name('AdminGoPromiseAccept');
+    Route::post('/go_promise_revision', [\App\Http\Controllers\GoPromiseController::class,'AdminGoPromiseRevision'])->name('AdminGoPromiseRevision');
+    Route::get('/go_proposal', [\App\Http\Controllers\GoProposalController::class,'AdminGoProposal'])->name('AdminGoProposal');
+    Route::get('/go_shp', [\App\Http\Controllers\GoShpController::class,'AdminGoShp'])->name('AdminGoShp');
+    Route::get('/go_thesis', [\App\Http\Controllers\GoThesisController::class,'AdminGoThesis'])->name('AdminGoThesis');
 });
 
-Route::get('/admin/thesis', function () {
-    return view('dashboard.admin.page.thesis.index');
-});
 
 Route::get('/admin/articles', function () {
     return view('dashboard.admin.page.articles.index');
-});
-
-Route::get('/admin/go_promise', function () {
-    return view('dashboard.admin.page.go_promise.index');
-});
-Route::get('/admin/go_proposal', function () {
-    return view('dashboard.admin.page.go_proposal.index');
-});
-Route::get('/admin/go_shp', function () {
-    return view('dashboard.admin.page.go_shp.index');
-});
-Route::get('/admin/go_thesis', function () {
-    return view('dashboard.admin.page.go_thesis.index');
-});
-
-//landing
-Route::get('/land', function () {
-    return view('landing.index');
-});
-
-//student
-Route::get('/student/go_promise', function () {
-    return view('dashboard.student.go_promise.index');
-});
-
-Route::get('/student/go_shp', function () {
-    return view('dashboard.student.go_shp.index');
-});
-
-Route::get('/student/go_thesis', function () {
-    return view('dashboard.student.go_thesis.index');
-});
-
-Route::get('/student/articles', function () {
-    return view('dashboard.student.articles.index');
 });

@@ -15,10 +15,15 @@ class Student extends Model
     protected $table = "students";
 
     // ** Guard ID for not fill
-    protected $guarded = "id";
+    protected $guarded = ["id"];
 
     public function thesis() : HasOne
     {
         return $this->hasOne(Thesis::class, 'student_id', 'nim');
+    }
+
+    public function user() :HasOne
+    {
+        return $this->hasOne(User::class, 'nim', 'nim');
     }
 }

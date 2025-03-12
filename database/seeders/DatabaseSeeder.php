@@ -49,7 +49,9 @@ class DatabaseSeeder extends Seeder
 
         Smt::create([
             'smt' => '20242',
+            'year' => '2025',
             'abbr' => '2024/2025 Genap',
+            'now' => true
         ]);
 
         Smt::first()->get('id');
@@ -66,13 +68,49 @@ class DatabaseSeeder extends Seeder
             'name' => 'Prof. Dr. Sri Mulyani, SH.,M.Hum',
             'email' => 'sri-mulyani@untagsmg.ac.id',
             'jafa' => 'Profesor',
+            'gol' => 'IV/C',
             'nuptk' => '9246744645230083',
+        ]);
+
+        Lecture::create([
+            'nidn' => '0608076201',
+            'name' => 'DR. YULIES TIENA MASRIANI, S.H., M.HUM., M.KN',
+            'email' => 'sri-mulyani@untagsmg.ac.id',
+            'jafa' => 'Lektor Kepala',
+            'gol' => 'IV/B',
+            'nuptk' => '9246744645230084',
+        ]);
+        Lecture::create([
+            'nidn' => '0609026301',
+            'name' => 'DR. BAMBANG JOYO SUPENO SH MHUM',
+            'email' => 'mulyani@untagsmg.ac.id',
+            'jafa' => 'Lektor Kepala',
+            'gol' => 'IV/B',
+            'nuptk' => '9246744645230087',
         ]);
 
         Student::create([
             'nim'=> '231003741011353',
             'name'=> 'ANINDITA GIRINDRA WARDHANI',
             'email'=> 'nin@mail.com',
+            'major'=> '11',
+            'place_date'=> 'semarang',
+            'birth_date'=> '2024-02-02',
+        ]);
+
+        Student::create([
+            'nim'=> '241003741011439',
+            'name'=> 'IMRON CHUMAIDI',
+            'email'=> 'iron@mail.com',
+            'major'=> '11',
+            'place_date'=> 'semarang',
+            'birth_date'=> '2024-02-02',
+        ]);
+        Student::create([
+            'nim'=> '241003741011438',
+            'name'=> 'ELANG SATMOKO',
+            'email'=> 'el@mail.com',
+            'major'=> '12',
             'place_date'=> 'semarang',
             'birth_date'=> '2024-02-02',
         ]);
@@ -81,6 +119,16 @@ class DatabaseSeeder extends Seeder
             'nim'=> '1',
             'name'=> 'Mahasiswa Test',
             'email'=> 'test@mail.com',
+            'major'=> '13',
+            'place_date'=> 'semarang',
+            'birth_date'=> '2024-02-02',
+        ]);
+
+        Student::create([
+            'nim'=> '2',
+            'name'=> 'Mahasiswa Banget',
+            'email'=> 'test2@mail.com',
+            'major'=> '13',
             'place_date'=> 'semarang',
             'birth_date'=> '2024-02-02',
         ]);
@@ -88,7 +136,7 @@ class DatabaseSeeder extends Seeder
         Thesis::create([
             'title_final'=> 'TANGGUNG JAWAB DOKTER DALAM OPERASI BIBIR SUMBING PADA PELAYANAN BAKTI SOSIAL YANG DISELENGGARAKAN OLEH RUMAH SAKIT',
             'smt'=> '20242',
-            'year'=> '2024',
+            'year'=> '2025',
             'das_sein'=> 'TANGGUNG JAWAB DOKTER DALAM OPERASI BIBIR SUMBING PADA PELAYANAN BAKTI SOSIAL YANG DISELENGGARAKAN OLEH RUMAH SAKIT',
             'das_sollen'=> 'TANGGUNG JAWAB DOKTER DALAM OPERASI BIBIR SUMBING PADA PELAYANAN BAKTI SOSIAL YANG DISELENGGARAKAN OLEH RUMAH SAKIT',
             'gaps'=> 'TANGGUNG JAWAB DOKTER DALAM OPERASI BIBIR SUMBING PADA PELAYANAN BAKTI SOSIAL YANG DISELENGGARAKAN OLEH RUMAH SAKIT',

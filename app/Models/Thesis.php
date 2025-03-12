@@ -16,7 +16,7 @@ class Thesis extends Model
     protected $table = "theses";
 
     // ** Guard ID for not fill
-    protected $guarded = "id";
+    protected $guarded = ["id"];
 
     public function students() : HasOne
     {
@@ -52,6 +52,18 @@ class Thesis extends Model
             'nidn',
             'promotor',
             'nidn'
+        );
+    }
+
+    public function users() : HasOneThrough
+    {
+        return $this->hasOneThrough(
+            User::class,
+            Student::class,
+            'nim',
+            'nim',
+            'student_id',
+            'nim',
         );
     }
 

@@ -14,7 +14,7 @@ class Smt extends Model
     protected $table = "smts";
 
     // ** Guard ID for not fill
-    protected $guarded = "id";
+    protected $guarded = ["id"];
 
     public function quotas() : HasMany
     {

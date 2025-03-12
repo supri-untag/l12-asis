@@ -43,7 +43,7 @@ class AuthenticationController extends Controller
                 "status" => 200,
                 "success" => true,
                 "error_code" => 0,
-                "message" => 'Login berhasil',
+                "message" => 'Login berhasil, Selamat datang ' . collect(User::where('email',$userRequest->get('email'))->get()->first())->get('name'),
             ];
         }
         return [
@@ -57,6 +57,13 @@ class AuthenticationController extends Controller
     public function signUp()
     {
         return view('auth.sign-up');
+    }
+
+    public function signOut(Request $request)
+    {
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
     public function signUpProses(Request $request)
@@ -96,6 +103,7 @@ class AuthenticationController extends Controller
                 'nim' => $userToStd->get( 'nim'),
                 'remember_token' => Str::random(20),
             ]);
+            Student::where('nim', $userToStd->get( 'nim'))->update(["email"=>$userToStd->get('email')]);
             return [
                 "status" => 200,
                 "success" => true,

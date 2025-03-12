@@ -19,7 +19,7 @@ class AuthControlMiddleware
         if (!Auth::check()){
             return redirect(route('signInIndex'));
         }
-        if (Auth::user()->role == 'admin' ){
+            if (Auth::user()->role == 'admin' ){
             return redirect(route('adminIndex'));
         }
         if (Auth::user()->role == 'student' ){

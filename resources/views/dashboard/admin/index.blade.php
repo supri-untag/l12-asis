@@ -1,4 +1,4 @@
-@extends('master-student')
+@extends('master')
 @section('app_content')
 
 @endsection

@@ -203,7 +203,6 @@ var KTSignupGeneral = function() {
             form = document.querySelector('#kt_sign_up_form');
             submitButton = document.querySelector('#kt_sign_up_submit');
             passwordMeter = KTPasswordMeter.getInstance(form.querySelector('[data-kt-password-meter="true"]'));
-
             handleForm ();
         }
     };

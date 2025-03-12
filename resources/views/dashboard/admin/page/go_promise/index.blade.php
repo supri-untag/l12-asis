@@ -1,4 +1,7 @@
 @extends('master')
+@section('meta')
+    <title>SiAsis - Admin | Permohnan Judul</title>
+@endsection
 @section('app_content')
     <!--begin::Toolbar-->
     <div class="d-flex flex-wrap flex-stack mb-6">
@@ -115,71 +118,108 @@
     <!--begin::Row-->
     <div class="row g-6 g-xl-9">
         <!--begin::Col-->
-        <div class="col-md-6 col-xl-4">
-            <!--begin::Card-->
-            <a href="#" class="card border-hover-primary">
-                <!--begin::Card header-->
-                <div class="card-header border-0 pt-9">
-                    <!--begin::Card Title-->
-                    <div class="card-title m-0">
-                        <!--begin::Avatar-->
-                        <div class="symbol symbol-50px w-50px bg-light">
-                            <img src="{{ Vite::asset('resources/assets/media/svg/brand-logos/plurk.svg') }}" alt="image" class="p-3" />
+        @foreach($thesis as $thesis_detail)
+            <div class="col-md-6 col-xl-4">
+                <!--begin::Card-->
+                <a href="{{route("AdminGoPromiseGetByID")}}" class="card border-hover-primary _buttons-for-details" data-token="{{csrf_token()}}" data-id="{{$thesis_detail->id}}" data-bs-toggle="modal" data-bs-target="#kt_modal_go_promise">
+                    <!--begin::Card header-->
+                    <div class="card-header border-0 pt-9">
+                        <!--begin::Card Title-->
+                        <div class="card-title m-0">
+                            <!--begin::Avatar-->
+                            <div class="symbol symbol-50px w-50px bg-light">
+                                <img src="{{ Vite::asset('resources/assets/media/svg/brand-logos/plurk.svg') }}" alt="image" class="p-3" />
+                            </div>
+                            <!--end::Avatar-->
                         </div>
-                        <!--end::Avatar-->
+                        <!--end::Car Title-->
+                        <!--begin::Card toolbar-->
+                        @switch($thesis_detail->status_promise)
+                            @case(1)
+                                <!--begin::Card toolbar-->
+                                <div class="card-toolbar">
+                                    <span class="badge badge-light-info fw-bold me-auto px-4 py-3">Penugasan</span>
+                                </div>
+                                <!--begin::Card toolbar-->
+                                @break
+
+                            @case(2)
+                                <!--begin::Card toolbar-->
+                                <div class="card-toolbar">
+                                    <span class="badge badge-light-primary fw-bold me-auto px-4 py-3">Review</span>
+                                </div>
+                                <!--begin::Card toolbar-->
+                                @break
+                            @case(3)
+                                <!--begin::Card toolbar-->
+                                <div class="card-toolbar">
+                                    <span class="badge badge-light-dark fw-bold me-auto px-4 py-3">Revisi</span>
+                                </div>
+                                <!--begin::Card toolbar-->
+                                @break
+                            @case(4)
+                                <!--begin::Card toolbar-->
+                                <div class="card-toolbar">
+                                    <span class="badge badge-light-primary fw-bold me-auto px-4 py-3">Diterima</span>
+                                </div>
+                                <!--begin::Card toolbar-->
+                                @break
+                            @default
+                                <!--begin::Card toolbar-->
+                                <div class="card-toolbar">
+                                    <span class="badge badge-secondary fw-bold me-auto px-4 py-3">Tidak Dketahui</span>
+                                </div>
+                                <!--begin::Card toolbar-->
+                        @endswitch
+                        <!--end::Card toolbar-->
                     </div>
-                    <!--end::Car Title-->
-                    <!--begin::Card toolbar-->
-                    <div class="card-toolbar">
-                        <span class="badge badge-light-primary fw-bold me-auto px-4 py-3">Mengajukan</span>
-                    </div>
-                    <!--end::Card toolbar-->
-                </div>
-                <!--end:: Card header-->
-                <!--begin:: Card body-->
-                <div class="card-body p-9">
-                    <!--begin::Name-->
-                    <div class="fs-3 fw-bold text-dark">Supriyanto</div>
-                    <!--end::Name-->
-                    <!--begin::Description-->
-                    <p class="text-gray-400 fw-semibold fs-5 mt-1 mb-7">231003741011341</p>
-                    <!--end::Description-->
-                    <!--begin::Info-->
-                    <div class="d-flex flex-wrap mb-5">
-                        <!--begin::Due-->
-                        <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
-                            <p>TANGGUNG JAWAB DOKTER DALAM OPERASI BIBIR SUMBING PADA PELAYANAN BAKTI SOSIAL YANG DISELENGGARAKAN OLEH RUMAH SAKIT</p>
+                    <!--end:: Card header-->
+                    <!--begin:: Card body-->
+                    <div class="card-body p-9">
+                        <!--begin::Name-->
+                        <div class="fs-3 fw-bold text-dark">{{ $thesis_detail->students->name}}</div>
+                        <!--end::Name-->
+                        <!--begin::Description-->
+                        <p class="text-gray-400 fw-semibold fs-5 mt-1 mb-7">{{ $thesis_detail->student_id}}</p>
+                        <!--end::Description-->
+                        <!--begin::Info-->
+                        <div class="d-flex flex-wrap mb-5">
+                            <!--begin::Due-->
+                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                                <p>{{ $thesis_detail->title_promise}}</p>
+                            </div>
+                            <!--end::Due-->
+                            <!--begin::Budget-->
+                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3">
+                                <div class="fs-6 text-gray-800 fw-bold">{{ $thesis_detail->promotors->name}}</div>
+                                <div class="fw-semibold text-gray-400">{{ $thesis_detail->promotors->nidn}}</div>
+                            </div>
+                            <!--end::Budget-->
                         </div>
-                        <!--end::Due-->
-                        <!--begin::Budget-->
-                        <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3">
-                            <div class="fs-6 text-gray-800 fw-bold">Sabtu, 8 Maret 2025</div>
-                            <div class="fw-semibold text-gray-400">Dr. Bambang Joyosupeno, SH., M.Hum</div>
+                        <!--end::Info-->
+                        <!--begin::Progress-->
+                        <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="This project 50% completed">
+                            <div class="bg-primary rounded h-4px" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <!--end::Budget-->
-                    </div>
-                    <!--end::Info-->
-                    <!--begin::Progress-->
-                    <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="This project 50% completed">
-                        <div class="bg-primary rounded h-4px" role="progressbar" style="width: 100%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <!--end::Progress-->
-                    <!--begin::Users-->
-                    <div class="text-end">
-                        <!--begin::User-->
-                        <div class="text-center">
-                            <button class="btn btn-bg-primary text-light" data-bs-toggle="modal" data-bs-target="#kt_modal_detail">Detail</button>
-                            <button class="btn btn-bg-success text-light">Setujui</button>
+                        <!--end::Progress-->
+                        <!--begin::Users-->
+                        <div class="text-end">
+                            <!--begin::User-->
+{{--                            <div class="text-center">--}}
+{{--                                <button class="btn btn-bg-primary text-light" data-bs-toggle="modal" data-bs-target="#kt_modal_go_promise">Detail</button>--}}
+{{--                                <button class="btn btn-bg-success text-light">Setujui</button>--}}
+{{--                            </div>--}}
+                            <!--begin::User-->
                         </div>
-                        <!--begin::User-->
+                        <!--end::Users-->
                     </div>
-                    <!--end::Users-->
-                </div>
-                <!--end:: Card body-->
-            </a>
-            <!--end::Card-->
-        </div>
-        <!--end::Col-->
+                    <!--end:: Card body-->
+                </a>
+                <!--end::Card-->
+            </div>
+            <!--end::Col-->
+        @endforeach
+
     </div>
     <!--end::Row-->
     <!--begin::Pagination-->
@@ -218,26 +258,38 @@
         </ul>
         <!--end::Pages-->
     </div>
-{{--    Modal Detail --}}
 
-    <div class="modal bg-body fade" tabindex="-1" id="kt_modal_detail">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content shadow-none">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
 
+    <div class="modal fade" id="kt_modal_go_promise" tabindex="-1" aria-hidden="true">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-xl">
+            <!--begin::Modal content-->
+            <div class="modal-content rounded">
+                <!--begin::Modal header-->
+                <div class="modal-header justify-content-end border-0 pb-0">
                     <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span class="path2"></span></i>
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <i class="ki-duotone ki-cross fs-1">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
                     </div>
                     <!--end::Close-->
                 </div>
-
-                <div class="modal-body">
-                    <!--begin::Card-->
+                <!--end::Modal header-->
+                <!--begin::Modal body-->
+                <div class="modal-body pt-0 pb-15 px-5 px-xl-20">
+                    <!--begin::Heading-->
+                    <div class="mb-13 text-center">
+                        <h1 id="headerModalDetail" class="mb-3">Pengajuan Judul dan Dosen Pembimbing</h1>
+                        {{--                            <div class="text-muted fw-semibold fs-5">If you need more info, please check--}}
+                        {{--                                <a href="#" class="link-primary fw-bold">Pricing Guidelines</a>.</div>--}}
+                    </div>
+                    <!--end::Heading-->
                     <div class="card">
                         <!--begin::Form-->
-                        <form id="kt_detail_form" class="form">
+                        <form id="kt_details_go_promise_form" class="form" action="#" method="post" data-kt-redirect-url="{{route('AdminGoPromise')}}">
+                            @csrf
                             <!--begin::Card body-->
                             <div class="card-body p-9">
                                 <!--begin::Row-->
@@ -249,7 +301,9 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
-                                        <input type="text" class="form-control form-control-solid disabled" disabled name="name" value="Supriyanto" />
+                                        <input type="hidden" name="h_name" value=" ">
+                                        <input type="text" class="form-control form-control-solid disabled" disabled
+                                               name="name" value=" "/>
                                     </div>
                                 </div>
                                 <!--end::Row-->
@@ -262,21 +316,41 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
-                                        <input type="text" class="form-control form-control-solid" disabled name="type" value="231003741011341" />
+                                        <input type="hidden" name="h_nim" value=" ">
+                                        <input type="text" class="form-control form-control-solid" disabled name="nim"
+                                               value=" "/>
                                     </div>
                                 </div>
                                 <!--end::Row-->
                                 <!--begin::Row-->
                                 <div class="row mb-8">
                                     <!--begin::Col-->
-                                    <div class="col-xl-3">
-                                        <div class="fs-6 fw-semibold mt-2 mb-3">Pengajuan Dosbing</div>
-                                    </div>
-                                    <!--end::Col-->
+
                                     <!--begin::Col-->
-                                    <div class="col-xl-9 fv-row">
-                                        <input type="text" class="form-control form-control-solid" disabled name="type" value="Dr. Bambang Joyosupeno, SH., M.Hum" />
+                                    <div class="row mb-8">
+                                        <!--begin::Col-->
+                                        <div class="col-xl-3">
+                                            <div class="fs-6 fw-semibold mt-2 mb-3">Dosen Pembimbing</div>
+                                        </div>
+                                        <!--end::Col-->
+                                        <!--begin::Col-->
+                                        <div class="col-xl-9 fv-row">
+                                            <input type="hidden" name="h_promotor" value="">
+                                            <input type="hidden" name="key" value="">
+                                            <select class="form-select" name="promotor" data-control="select2"  data-placeholder="==== Pilih Dosen Pembimbing====">
+                                                @foreach($lectures as $lecture)
+                                                    <option value="{{$lecture->nidn}}">{{$lecture->name}} - {{$lecture->jafa}} - Telah Membimbing :
+                                                        @foreach($lecture->quotas as $quota)
+                                                            @if( $quota->smt_id == $idSmtNow)
+                                                                {{$quota->quota_at_smt}}
+                                                            @endif
+                                                        @endforeach
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <!--end::Row-->
 
@@ -289,7 +363,7 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
-                                        <textarea name="description" class="form-control form-control-solid h-100px">Organize your thoughts with an outline. Here’s the outlining strategy I use. I promise it works like a charm. Not only will it make writing your blog post easier, it’ll help you make your message</textarea>
+                                        <textarea name="title_promise" class="form-control h-100px"></textarea>
                                     </div>
                                     <!--begin::Col-->
                                 </div>
@@ -303,7 +377,7 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
-                                        <textarea name="description" class="form-control form-control-solid h-100px">Organize your thoughts with an outline. Here’s the outlining strategy I use. I promise it works like a charm. Not only will it make writing your blog post easier, it’ll help you make your message</textarea>
+                                        <textarea name="das_sein" class="form-control h-100px"></textarea>
                                     </div>
                                     <!--begin::Col-->
                                 </div>
@@ -317,7 +391,7 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
-                                        <textarea name="description" class="form-control form-control-solid h-100px">Organize your thoughts with an outline. Here’s the outlining strategy I use. I promise it works like a charm. Not only will it make writing your blog post easier, it’ll help you make your message</textarea>
+                                        <textarea name="das_sollen" class="form-control h-100px"></textarea>
                                     </div>
                                     <!--begin::Col-->
                                 </div>
@@ -331,7 +405,7 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
-                                        <textarea name="description" class="form-control form-control-solid h-100px">Organize your thoughts with an outline. Here’s the outlining strategy I use. I promise it works like a charm. Not only will it make writing your blog post easier, it’ll help you make your message</textarea>
+                                        <textarea name="gaps" class="form-control h-100px"></textarea>
                                     </div>
                                     <!--begin::Col-->
                                 </div>
@@ -345,27 +419,49 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
-                                        <textarea name="description" class="form-control form-control-solid h-100px">Organize your thoughts with an outline. Here’s the outlining strategy I use. I promise it works like a charm. Not only will it make writing your blog post easier, it’ll help you make your message</textarea>
+                                        <textarea name="formulation" class="form-control h-100px"></textarea>
                                     </div>
                                     <!--begin::Col-->
                                 </div>
                                 <!--end::Row-->
                             </div>
                             <!--end::Card body-->
+                            {{--                                <button type="submit">kirim</button>--}}
                         </form>
                         <!--end:Form-->
                     </div>
-                    <!--end::Card-->
+                    <!--begin::Actions-->
+                    <div class="d-flex flex-center flex-row-fluid pt-12">
+                        <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-warning text-dark me-3" id="kt_revision_go_promise_button" data-kt-send="{{route('AdminGoPromiseRevision')}}">
+                            <!--begin::Indicator label-->
+                            <span class="indicator-label">Revisi</span>
+                            <!--end::Indicator label-->
+                            <!--begin::Indicator progress-->
+                            <span class="indicator-progress">Mohon Tunggu...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            <!--end::Indicator progress-->
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="kt_accept_go_promise_button" data-kt-send="{{route('AdminGoPromiseAccept')}}">
+                            <!--begin::Indicator label-->
+                            <span class="indicator-label">Terima</span>
+                            <!--end::Indicator label-->
+                            <!--begin::Indicator progress-->
+                            <span class="indicator-progress">Mohon Tunggu...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            <!--end::Indicator progress-->
+                        </button>
+                    </div>
+                    <!--end::Actions-->
                 </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <!--end::Modal body-->
             </div>
+            <!--end::Modal content-->
         </div>
+        <!--end::Modal dialog-->
     </div>
+    <!--end::Modal - Upgrade plan-->
 @endsection
 @section('js')
-{{--    @vite('resources/js/page/articles/table.js')--}}
+    @vite('resources/js/page/go_promise/admin_go_promise.js')
 @endsection

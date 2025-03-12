@@ -15,7 +15,7 @@ class Lecture extends Model
     protected $table = "lectures";
 
     // ** Guard ID for not fill
-    protected $guarded = "id";
+    protected $guarded = ["id"];
 
     public function promotors() : HasMany
     {

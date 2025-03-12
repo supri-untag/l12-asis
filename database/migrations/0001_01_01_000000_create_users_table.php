@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('role');
             $table->string('nim')->nullable();
+            $table->string('pict')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

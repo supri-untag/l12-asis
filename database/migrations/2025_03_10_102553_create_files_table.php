@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('smts', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->string('smt');
-            $table->string('year');
-            $table->string('abbr');
-            $table->boolean('now');
+        Schema::create('files', function (Blueprint $table) {
+            $table->uuid("id");
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('smts');
+        Schema::dropIfExists('files');
     }
 };

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("nim");
             $table->string("name");
             $table->string("email");
+            $table->string("major");
             $table->string("place_date");
             $table->date("birth_date");
             $table->timestamps();

@@ -13,6 +13,6 @@ class Article extends Model
     protected $table = "articles";
 
     // ** Guard ID for not fill
-    protected $guarded = "id";
+    protected $guarded = ["id"];
 
 }

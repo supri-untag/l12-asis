@@ -2,7 +2,6 @@
 <html lang="en">
 <!--begin::Head-->
 <head><base href=""/>
-    <title>Display Test</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="{{ Vite::asset('resources/assets/media/favicon.ico') }}" />
@@ -152,9 +151,9 @@
                                         <!--end::Avatar-->
                                         <!--begin::Username-->
                                         <div class="d-flex flex-column">
-                                            <div class="fw-bold d-flex align-items-center fs-5">Max Smith
-                                                <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span></div>
-                                            <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
+                                            <div class="fw-bold d-flex align-items-center fs-5">{{auth()->user()->name}}
+                                                <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Admin</span></div>
+                                            <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{auth()->user()->email}}</a>
                                         </div>
                                         <!--end::Username-->
                                     </div>
@@ -177,7 +176,12 @@
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-5">
-                                    <a href="../../demo1/dist/authentication/layouts/corporate/sign-in.html" class="menu-link px-5">Sign Out</a>
+                                    <form action="{{route('signOut')}}" method="post">
+                                        @csrf
+                                        <button style="
+                                border:none;
+                                background: none;" type="submit" class="text-danger menu-link px-5">Keluar</button>
+                                    </form>
                                 </div>
                                 <!--end::Menu item-->
                             </div>
@@ -233,7 +237,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
+                                <a class="menu-link" href="{{route('lectureIndex')}}">
 											<span class="menu-icon">
 												<i class="ki-duotone ki-user fs-2">
 													<span class="path1"></span>
@@ -248,7 +252,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
+                                <a class="menu-link" href="{{route('studentIndexDash')}}">
 											<span class="menu-icon">
 												<i class="ki-duotone ki-profile-user fs-2">
 													<span class="path1"></span>
@@ -265,7 +269,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
+                                <a class="menu-link" href="{{route('thesisIndex')}}">
 											<span class="menu-icon">
 												<i class="ki-duotone ki-notepad-bookmark fs-2">
                                                     <span class="path1"></span>
@@ -308,7 +312,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
+                                <a class="menu-link" href="{{route('AdminGoPromise')}}">
 											<span class="menu-icon">
 												<i class="ki-duotone ki-code fs-2">
 													<span class="path1"></span>
@@ -325,7 +329,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
+                                <a class="menu-link" href="{{route('AdminGoProposal')}}">
 											<span class="menu-icon">
 												<i class="ki-duotone ki-note fs-2">
 													<span class="path1"></span>
@@ -340,7 +344,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
+                                <a class="menu-link" href="{{route('AdminGoShp')}}">
 											<span class="menu-icon">
 												<i class="ki-duotone ki-note-2 fs-2">
 													<span class="path1"></span>
@@ -357,7 +361,7 @@
                             <!--begin:Menu item-->
                             <div class="menu-item">
                                 <!--begin:Menu link-->
-                                <a class="menu-link" href="#">
+                                <a class="menu-link" href="{{route('AdminGoThesis')}}">
 											<span class="menu-icon">
 												<i class="ki-duotone ki-book-open fs-2">
 													<span class="path1"></span>
@@ -434,13 +438,19 @@
     </i>
 </div>
 <!--end::Scrolltop-->
-
+<!--begin::Page loading(append to body)-->
+<div class="page-loader flex-column">
+    <span class="spinner-border text-primary" role="status"></span>
+    <span class="text-muted fs-6 fw-semibold mt-5">Loading...</span>
+</div>
+<!--end::Page loading-->
 <!--begin::Javascript-->
 <script>var hostUrl = "assets/";</script>
 <!--begin::Global Javascript Bundle(mandatory for all pages)-->
 <script src="{{URL::asset('plugins/global/plugins.bundle.js')}}"></script>
 <script src="{{URL::asset('plugins/global/scripts.bundle.js')}}"></script>
 <script src="{{URL::asset('plugins/global/datatables/datatables.bundle.js')}}"></script>
+@vite('resources/js/app.js')
 <!--end::Global Javascript Bundle-->
 <!--begin::Vendors Javascript(used for this page only)-->
 @yield('js')

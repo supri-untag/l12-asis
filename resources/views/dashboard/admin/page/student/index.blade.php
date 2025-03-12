@@ -235,7 +235,7 @@
                             <!--begin::Modal header-->
                             <div class="modal-header" id="kt_modal_add_student_header">
                                 <!--begin::Modal title-->
-                                <h2 class="fw-bold">Tambah Dosen</h2>
+                                <h2 class="fw-bold">Tambah Mahasiswa</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
                                 <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-student-modal-action="close">
@@ -405,50 +405,74 @@
                 </tr>
                 </thead>
                 <tbody class="text-gray-600 fw-semibold">
-                <tr>
-                    <td>
-                        <div class="form-check form-check-sm form-check-custom form-check-solid">
-                            <input class="form-check-input" type="checkbox" value="1" />
-                        </div>
-                    </td>
-                    <td class="d-flex align-items-center">
-                        <!--begin:: Avatar -->
-                        <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                            <a href="#">
-                                <div class="symbol-label">
-                                    <img src="{{ Vite::asset('resources/assets/media/avatars/300-5.jpg') }}" alt="Nama Dosen" class="w-100" />
+                @foreach($students as $student)
+                    <tr>
+                        <td>
+                            <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                <input class="form-check-input" type="checkbox" value="1" />
+                            </div>
+                        </td>
+                        <td class="d-flex align-items-center">
+                            <!--begin:: Avatar -->
+                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
+                                <a href="#">
+                                    <div class="symbol-label">
+                                        <img src="{{ Vite::asset('resources/assets/media/avatars/300-5.jpg') }}" alt="Nama Dosen" class="w-100" />
+                                    </div>
+                                </a>
+                            </div>
+                            <!--end::Avatar-->
+                            <!--begin::User details-->
+                            <div class="d-flex flex-column">
+                                <a href="#" class="text-gray-800 text-hover-primary mb-1">{{$student->name}}</a>
+                                <span>{{$student->email}}</span>
+                            </div>
+                            <!--begin::User details-->
+                        </td>
+                        <td>{{$student->nim}}</td>
+                        <td>
+                            @switch($student->major)
+                                @case(11)
+                                    HUKUM PERDATA BISNIS
+                                    @break
+                                @case(12)
+                                    HUKUM PIDANA
+                                    @break
+                                @case(13)
+                                    HUKUM POLITIK DAN PEMERINTAHAN
+                                    @break
+                                @case(14)
+                                    HUKUM KESEHATAN
+                                    @break
+                                @default
+                                    <!--begin::Card toolbar-->
+                                    <div class="card-toolbar">
+                                        <span class="badge badge-secondary fw-bold me-auto px-4 py-3">Tidak Dketahui</span>
+                                    </div>
+                                    <!--begin::Card toolbar-->
+                            @endswitch
+
+                        </td>
+                        <td class="text-end">
+                            <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
+                                <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
+                            <!--begin::Menu-->
+                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="../../demo1/dist/apps/user-management/users/view.html" class="menu-link px-3">Edit</a>
                                 </div>
-                            </a>
-                        </div>
-                        <!--end::Avatar-->
-                        <!--begin::User details-->
-                        <div class="d-flex flex-column">
-                            <a href="#" class="text-gray-800 text-hover-primary mb-1">Nama Dosen</a>
-                            <span>example@mail.com</span>
-                        </div>
-                        <!--begin::User details-->
-                    </td>
-                    <td>06100345</td>
-                    <td>Profesor</td>
-                    <td class="text-end">
-                        <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                            <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
-                        <!--begin::Menu-->
-                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="../../demo1/dist/apps/user-management/users/view.html" class="menu-link px-3">Edit</a>
+                                <!--end::Menu item-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
+                                </div>
+                                <!--end::Menu item-->
                             </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3" data-kt-users-table-filter="delete_row">Delete</a>
-                            </div>
-                            <!--end::Menu item-->
-                        </div>
-                        <!--end::Menu-->
-                    </td>
-                </tr>
+                            <!--end::Menu-->
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
             <!--end::Table-->
